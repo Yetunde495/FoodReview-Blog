@@ -1,0 +1,20 @@
+<%- include("partials/header") -%>
+
+
+<main class="form-signin">
+  <form action="/" method="POST">
+    <img class="mb-4" src="images/olounjeiya.jpg" alt="" >
+    <h1 class="h3 mb-3 fw-normal">Signup To My Newsletter</h1>
+
+
+      <input type="text" name="fName" class="form-control top" id="floatingInput" placeholder="Firstname" required autofocus>
+      <input type="text" name="lName" class="form-control middle" id="floatingPassword" placeholder="Lastname" required>
+      <input type="email" name="email" class="form-control bottom" id="floatingPassword" placeholder="Email" required>
+
+
+    <button class="w-100 btn btn-lg btn-dark" type="submit">Sign Me Up!</button>
+    <p class="mb-3 text-muted">&copy; Olounjeiya</p>
+  </form>
+</main>
+
+<%- include("partials/footer")  -%>

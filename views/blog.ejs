@@ -1,0 +1,13 @@
+<%- include("partials/header") -%>
+
+<h1>Food Reviews</h1>
+
+      <% posts.forEach(function(post) { %>
+
+        <img class="img-fluid sticky-top" style="top: 20px;" alt="<%- post.title %>" src="/public/uploads/<%- post.image %>"></img>
+        <h1 class="mb-0"> <%= post.title %>  </h1>
+        <p class="mb-auto"> <%= post.content.substring(0, 100)  %>
+         <button class="blogpost-button" type="button" name="button"><a href="/posts/<%=post.title%>">Read More</a></button>
+        </p>
+
+      <% });  %>

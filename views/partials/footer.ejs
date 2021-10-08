@@ -1,0 +1,100 @@
+<section id="footer">
+  <div class="container">
+<footer class="py-5">
+<div class="row">
+<div class="col-3">
+  <h5>Olounjeiya</h5>
+  <ul class="nav flex-column">
+    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Blog</a></li>
+    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contact</a></li>
+    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Sponsorship</a></li>
+  </ul>
+</div>
+
+
+<div class="col-3">
+  <h5>Blog</h5>
+  <ul class="nav flex-column">
+    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+  </ul>
+</div>
+
+<div class="col-6 offset-1 newsletter">
+  <form action="/" method="POST">
+    <h5>Subscribe to our newsletter</h5>
+    <p>Monthly digest of whats new and exciting from us.</p>
+    <div class="d-flex w-100 gap-2">
+      <label for="newsletter1" class="visually-hidden">Your Name</label>
+      <input id="newsletter1" name="fName" type="text" class="form-control" placeholder="Your Name">
+      <label for="newsletter1" class="visually-hidden">Email address</label>
+      <input id="newsletter1" name="email" type="text" class="form-control" placeholder="Your Email Address">
+      <button class="btn btn-primary" type="submit">Subscribe</button>
+    </div>
+  </form>
+</div>
+</div>
+
+<div class="d-flex justify-content-between py-4 my-4 border-top">
+<p>&copy; 2021 Olounjeiya. All rights reserved.</p>
+
+<ul class="list-unstyled d-flex">
+  <li class="ms-3"><a class="link-dark" href="#"><i class="fab footer-icons fa-facebook fa-2x"></i></a></li>
+      <li class="ms-3"><a class="link-dark" href="#"><i class="fab footer-icons fa-instagram fa-2x"></i></a></li>
+      <li class="ms-3"><a class="link-dark" href="#"><i class="fas footer-icons fa-envelope fa-2x"></i></a></li>
+</ul>
+</div>
+</footer>
+</div>
+  </section>
+
+  <script>
+    //media queries variables
+   var carousel = document.getElementById("ls-size-carousel");
+   var about = document.getElementById("ls-size");
+   var mobileCarousel = document.getElementById("carouselExampleIndicators");
+   var mobileAbout = document.getElementById("mobile-about");
+
+   //media query function
+  function mediaQuery() {
+    if (resize.matches) {
+      carousel.remove();
+      about.remove();
+
+    } else {
+      mobileCarousel.remove();
+      mobileAbout.remove();
+  }}
+      //media query size
+  var resize = window.matchMedia("(max-width: 700px)");
+  var largeScreen= window.matchMedia("(min-width: 701px)");
+  mediaQuery(resize, largeScreen); // Call listener function at run time
+  resize.addListener(mediaQuery); // Attach listener function on state changes
+  largeScreen.addListener(mediaQuery);
+
+
+      //Image Display
+var btn = document.getElementById("imageButton");
+var img = document.getElementById("img");
+var input = document.getElementById("url_input");
+console.log(input[0], btn, img);
+
+btn.addEventListener("click", takeInput);
+
+function takeInput() {
+  console.log(input[0].value);
+  img.setAttribute("src", input[0].value);
+  img.style.display = "inline-block";
+}
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
