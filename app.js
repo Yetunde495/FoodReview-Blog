@@ -4,21 +4,23 @@ const ejs = require("ejs");
 const _ = require("lodash");
 const https = require("https");
 const fileUpload = require('express-fileupload');
-
-
-
+// Setting Up Multer
+const multer = require('multer');
+const upload = multer({ dest: './public/data/uploads' });
 
 const app = express();
 
+// Have express use Multer Middleware
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json())
 app.use(express.static("public"));
 app.use(fileUpload());
 
 const posts = [];
 
-
+console.log(posts)
 
 
 
@@ -80,24 +82,34 @@ app.get("/compose", function(req, res) {
   res.render("compose");
 });
 
-app.post("/compose", function(req, res) {
+app.post("/compose",upload.single('imageFile'), function(req, res, next) {
+  
+  // Use destructuring to receive request body ( blog title & body)
+  const {postTitle, postBody} = req.body;
 
-        //Image//
-  let imageFile;
-  let uploadPath;
-  imageFile = req.body.imageFile;
-  uploadPath = require('path').resolve('./compose') + '/public/uploads/' + newImageName;
+  // Write simple conditional to check if req.files object is populated
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('No files were uploaded.')
+  }
+  
+  // Request file coming from front end
+  let newImage = req.files.imageFile.name
+  // Specify upload path
+  let uploadPath = require('path').resolve('./compose') + '\\public\\uploads\\' + newImage;
 
+  
 
+  // Make sure to save path to image in post object
   const post = {
-    image: newImageName,
-    title: req.body.postTitle,
-    content: req.body.postBody
+    image: uploadPath,
+    title: postTitle,
+    content: postBody
   };
 
   posts.push(post);
 
   res.redirect("/blog");
+  // console.log(posts)
 });
 
 app.get("/about", function(req, res) {
@@ -116,7 +128,9 @@ app.get("/posts/:postName", function(req, res) {
     if(requestedTitle === storedTitle) {
       res.render("post", {
         title: post.title,
-        content: post.content
+        content: post.content,
+        // Send location of your image to front end
+        imageDir:post.image
       });
     }
   });
