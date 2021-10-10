@@ -85,8 +85,7 @@ app.get("/compose", function(req, res) {
 app.post("/compose",upload.single('imageFile'), function(req, res, next) {
   
   // Use destructuring to receive request body ( blog title & body)
-  const {postTitle, postBody} = req.body
-  console.log(postTitle,postBody)
+  const {postTitle, postBody} = req.body;
 
   // Write simple conditional to check if req.files object is populated
   if (!req.files || Object.keys(req.files).length === 0) {
